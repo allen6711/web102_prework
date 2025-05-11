@@ -29,9 +29,25 @@ const gamesContainer = document.getElementById("games-container");
 function addGamesToPage(games) {
 
     // loop over each item in the data
-    games.forEach((game) => {
-        // ...
-    });
+    for (let i = 0; i < games.length; i++) {
+        // 建立新的 div 元素作為遊戲卡片
+        const gameCard = document.createElement("div");
+        
+        // 加上 CSS 類別以套用樣式
+        gameCard.classList.add("game-card");
+
+        // 設定卡片的 HTML 內容
+        gameCard.innerHTML = `
+            <img class="game-img" src="${games[i].img}" alt="${games[i].name} image"/>
+            <h3>${games[i].name}</h3>
+            <p>${games[i].description}</p>
+            <p><strong>Pledged:</strong> $${games[i].pledged.toLocaleString()}</p>
+            <p><strong>Backers:</strong> ${games[i].backers.toLocaleString()}</p>
+        `;
+
+        // 將這個卡片加入到頁面上
+        gamesContainer.appendChild(gameCard);
+    }
     
 
         // create a new div element, which will become the game card
